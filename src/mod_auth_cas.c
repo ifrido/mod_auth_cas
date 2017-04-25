@@ -580,6 +580,13 @@ char *getCASService(const request_rec *r, const cas_cfg *c)
 			(r->args != NULL && *r->args != '\0' ? "%3f" : ""),
 			escapeString(r, r->args), NULL);
 	}
+
+    ap_log_rerror(APLOG_MARK, APLOG_DEBUG, 0, r, "root_proxy->is_initialized '%d'", root_proxy->is_initialized);
+    ap_log_rerror(APLOG_MARK, APLOG_DEBUG, 0, r, "root_proxy->hostname '%s'", root_proxy->hostname);
+    ap_log_rerror(APLOG_MARK, APLOG_DEBUG, 0, r, "service '%s'", service);
+    ap_log_rerror(APLOG_MARK, APLOG_DEBUG, 0, r, "scheme '%s'", scheme);
+    ap_log_rerror(APLOG_MARK, APLOG_DEBUG, 0, r, "r->unparsed_uri '%s'", r->unparsed_uri);
+
 	if (c->CASDebug)
 		ap_log_rerror(APLOG_MARK, APLOG_DEBUG, 0, r, "CAS Service '%s'", service);
 	return service;
